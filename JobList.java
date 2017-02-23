@@ -1,125 +1,154 @@
 import java.util.Iterator;
 
-public class JobList implements ListADT<Job> {
+public class JobList<Job> implements ListADT<Job> {
+
+	//data members
+	private int numJobs;
 	
-	private Iterator<Job> iterator;
-	private Listnode<Job> head, curr;
-	private int numItems;
+	//Reference to the header node in a JobList instance
+	private Listnode<Job> head;
 	
+	/** This is the constructor for each JobList instance. Specifies the number
+	 * of Jobs in the list and the reference to the list itself
+	 * 
+	 * @param none
+	 */
 	public JobList() {
-		
-		head = new Listnode<Job>(null, null);
-		head = new Listnode<Job>(null, head);
-		curr = head;
-		numItems = 0;
+		this.numJobs = 0;
+		this.head = new Listnode<Job>(null);
 	}
-
-	@Override
+	
 	public Iterator<Job> iterator() {
-		iterator = new JobListIterator<Job>(); 
-		return iterator;
+		
+		return new JobListIterator(head);
 	}
-
-	@Override
-	public void add(Job item) throws IllegalArgumentException {
-		if (item == null) {
-			throw new IllegalArgumentException();
+	
+	/** This method adds a Job to the end of the JobList
+	 * 
+	 * @param the job to be added
+	 * @return none
+	 */
+	public void add(Job e) {
+		
+		Listnode<Job> curr = head;
+		while(head.getNext() != null) {
+			curr = head.getNext();
+		}
+		curr.setNext(new Listnode<Job>(e));
+		numJobs++;
+	}
+	
+	/** This method adds a job at a designated position within the JobList
+	 * 
+	 * @param position to add the job
+	 * @param Job to be added
+	 * @return none
+	 * @throws IndexOutOfBoundsException if position is faulty
+	 * 
+	 */
+	public void add(int pos, Job e) {
+		if(pos < 0 || pos > numJobs) throw new IndexOutOfBoundsException();
+		
+		// if asked to add item to the end of the List
+		if(pos == numJobs) {
+			add(e);
+			return;
 		}
 		
-		curr = head.getNext();
-		
-		while (curr.getNext() != null) {
+		Listnode<Job> curr = head;
+		for(int i = 0; i < pos; i++) {
 			curr = curr.getNext();
 		}
+		curr.setNext(new Listnode<Job>(e, curr.getNext()));
 		
-		Listnode<Job> e = new Listnode<Job>(item);
-		curr.setNext(e);
-		
-		numItems++;
+		numJobs++;
 	}
-
-	@Override
-	public void add(int pos, Job item) throws IndexOutOfBoundsException, IllegalArgumentException {
-		if (pos < 0 || pos > numItems - 1) {
-			throw new IndexOutOfBoundsException();
-		}
+	
+	/** This method checks if a JobList contains a particular job
+	 * 
+	 * @param the job being checked for in the JobList
+	 * @return whether or not the JobList contains that Job
+	 */
+	public boolean contains(Job e) {
+		Listnode<Job> curr = head;
 		
-		if (item == null) {
-			throw new IllegalArgumentException();
-		}
-		
-		curr = head.getNext();
-		
-		for (int i = 0; i < pos - 1; i++) {
-			curr = curr.getNext();
-		}
-		
-		curr.setNext(new Listnode<Job>(item, curr.getNext()));
-		
-		numItems++;
-	}
-
-	@Override
-	public boolean contains(Job item) {
-		curr = head.getNext();
-		
-		while (curr.getData() != null) {
-			if (curr.getData().equals(item)) {
+		for (int i = 0; i < numJobs; i++) {
+			if (curr.getNext().getData() == e) {
 				return true;
 			}
-			else {
-				curr = curr.getNext();
-			}
 		}
 		return false;
 	}
-
-	@Override
-	public int size() {
-		return numItems;
+	
+	/** Returns the job at a specified index in the JobList
+	 * 
+	 * @param position of job that is desired
+	 * @return the job at the specified position
+	 * @throws IndexOutOfBoundsException when position is faulty
+	 */
+	public Job get(int pos) {
+		//Check if pos is a good input or not, if not then throw
+		//Exception
+		if (pos < 0 || pos > numJobs) throw new IndexOutOfBoundsException();
+		
+		//Create duplicate reference
+		Listnode<Job> curr = head;
+		
+		//Traverse to the position of interest
+		for (int i = 0; i == pos; i++) {
+			curr = curr.getNext();
+		}
+		
+		//Return Job that curr's Listnode references
+		return curr.getData();
 	}
-
-	@Override
+	
+	/** This method returns a boolean value indicating whether the JobList
+	 *  is empty or not
+	 *  
+	 *  @param none
+	 *  @return if number of Jobs in JobList is zero or not
+	 * 
+	 */
 	public boolean isEmpty() {
-		if (numItems == 0) {
-			return true;
-		}
-		return false;
+		return numJobs == 0;
 	}
-
-	@Override
-	public Job get(int pos) throws IndexOutOfBoundsException {
+	
+	/** Removes a Job from the JobList at a specified position
+	 * 
+	 * @param position where removal is desired
+	 * @return Job at that position
+	 * @throws IndexOutOfBoundsException when position is faulty
+	 */
+	public Job remove(int pos) {
+		if (pos < 0 || pos > numJobs) throw new IndexOutOfBoundsException();
 		
-		if (pos < 0 || pos > numItems - 1) {
-			throw new IndexOutOfBoundsException();
-		}
+		//Initialize two place holder Listnodes
+		Listnode<Job> curr = head;
+		Listnode<Job> temp;
 		
-		curr = head.getNext();
-		
+		//Traverse to the node right before the deisred node 
 		for (int i = 0; i < pos; i++) {
 			curr = curr.getNext();
 		}
 		
-		return curr.getData();
-	}
-
-	@Override
-	public Job remove(int pos) throws IndexOutOfBoundsException {
+		temp = curr.getNext();
 		
-		if (pos < 0 || pos > numItems - 1) {
-			throw new IndexOutOfBoundsException();
-		}
-		
-		curr = head.getNext();
-		
-		for (int i = 0; i < pos - 1; i++) {
-			curr = curr.getNext();
-		}
-		
+		//Set previous node's next reference to the node after the node to 
+		//be removed.
 		curr.setNext(curr.getNext().getNext());
 		
-		return curr.getNext().getData();
+		//Return the data within the 
+		return temp.getData();
 	}
-
+	
+	/** Returns the number of Jobs in the JobList
+	 * 
+	 * @param none
+	 * @return number of jobs in the JobList
+	 */
+	public int size() {
+		return numJobs;
+	}
 	
 }
