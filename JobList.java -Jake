@@ -16,7 +16,7 @@ public class JobList implements ListADT<Job> {
 
 	@Override
 	public Iterator<Job> iterator() {
-		iterator = new JobListIterator<Job>(); 
+		iterator = new JobListIterator(head);  
 		return iterator;
 	}
 
