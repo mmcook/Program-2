@@ -59,7 +59,19 @@ public class Scoreboard implements ScoreboardADT {
 	 */
 	public void displayScoreBoard() {
 		// TODO Auto-generated method stub
+		String complete = null;
+		int points = 0;
+		Iterator<Job> itr = board.iterator();
 		
+		System.out.println("The jobs completed:");
+		
+		while(itr.hasNext()) {
+			complete = itr.next().getJobName();	
+			points = itr.next().getPoints();
+			System.out.println("Job name: " + complete);
+			System.out.println("Points earned for this job: " + points);
+			System.out.println("--------------------------------------------");
+		}
 	}
 
 }
