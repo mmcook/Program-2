@@ -23,6 +23,7 @@ public class Game{
          * TODO: Initializes all member variables
          */
     	this.timeToPlay = timeToPlay;
+    	jobSimulator = new JobSimulator(seed);
     }
 
     /**
@@ -61,7 +62,7 @@ public class Game{
      * in the JobSimulator object.
      */
     public void createJobs(){
-        //TODO: Invoke the simulator to create jobs
+        jobSimulator.simulateJobs(list, timeToPlay);
 
     }
 
@@ -117,8 +118,9 @@ public class Game{
      *      The amount of time the given job is to be worked on for.
      */
     public Job updateJob(int index, int duration){
-        //TODO: As per instructions in comments
-        return null;
+        Job tempJob = list.remove(index);
+        
+        return tempJob;
     }
 
     /**
@@ -138,7 +140,7 @@ public class Game{
      * This function simply invokes the displayScoreBoard method in the ScoreBoard class.
      */
     public void displayCompletedJobs(){
-        //TODO: Display all the completed jobs
+        scoreBoard.displayScoreBoard();
 
     }
 
@@ -147,7 +149,7 @@ public class Game{
      * @return the value calculated by getTotalScore
      */
     public int getTotalScore(){
-        //TODO: Return the total score accumulated
-        return 0;
+        
+        return scoreBoard.getTotalScore();
     }
 }
