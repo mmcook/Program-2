@@ -1,3 +1,19 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017
+// PROJECT:          Project 0
+// FILE:             Game.java
+//
+// Authors: 		 Jacob Vande Walle
+//
+/////////////////////////////////////////////////////////////////////////////
+
+/**
+ * This class has methods for the game that are called in GameApp.java
+ * It provides functionality to the game.
+ * @author Jake Vande Walle
+ *
+ */
+
 public class Game{
 
     /**
@@ -8,7 +24,11 @@ public class Game{
      * Whenever a Job is completed it is added to the scoreboard
      */
     private ScoreboardADT scoreBoard;
+    
+    // How much time is left in the game
     private int timeToPlay;
+    
+    // This is to create the jobs
     private JobSimulator jobSimulator;
 
     /**
@@ -129,13 +149,6 @@ public class Game{
         if (tempJob.isCompleted()) {
         	scoreBoard.updateScoreBoard(tempJob);
         }
-        else {
-        	list.add(index, tempJob);
-        }
-        
-        
-        
-        timeToPlay = timeToPlay - duration;
         
         return tempJob;
     }
