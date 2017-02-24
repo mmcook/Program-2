@@ -6,6 +6,8 @@ public class GameApp{
      */
     private static final Scanner STDIN = new Scanner(System.in);
 
+    private static int seed = 0;
+	private static int timeToPlay = 0;
     /**
      * Constructor for instantiating game class
      * @param seed: Seed value as processed in command line
@@ -26,8 +28,7 @@ public class GameApp{
      */
     public static void main(String[] args){
 
-    	int seed = 0;
-    	int timeToPlay = 0;
+    	
     	
         System.out.println("Welcome to the Job Market!");
         
@@ -50,7 +51,10 @@ public class GameApp{
      * Add Comments as per implementation
      */
     private void start(){
-        //TODO: The interactive game logic goes here
+    	// While there is still time remaining in the game
+    	while (timeToPlay > 0) {
+        	
+        }
     }
 
     /**
