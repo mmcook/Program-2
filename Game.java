@@ -19,9 +19,8 @@ public class Game{
      * duration used to determine the length of the game.
      */
     public Game(int seed, int timeToPlay){
-        /**
-         * TODO: Initializes all member variables
-         */
+    	list = new JobList();
+    	scoreBoard = new Scoreboard();
     	this.timeToPlay = timeToPlay;
     	jobSimulator = new JobSimulator(seed);
     }
@@ -31,7 +30,6 @@ public class Game{
      * @returns the amount of time left in the game.
      */
     public int getTimeToPlay() {
-        //TODO: return the amount of time left
         return timeToPlay;
     }
 
@@ -63,14 +61,12 @@ public class Game{
      */
     public void createJobs(){
         jobSimulator.simulateJobs(list, timeToPlay);
-
     }
 
     /**
      * @returns the length of the Joblist.
      */
     public int getNumberOfJobs(){
-        
         return list.size();
     }
 
@@ -120,6 +116,27 @@ public class Game{
     public Job updateJob(int index, int duration){
         Job tempJob = list.remove(index);
         
+        if (duration > timeToPlay) {
+        	duration = timeToPlay;
+        }
+        
+        tempJob.setSteps(tempJob.getSteps() + duration); 
+        
+        if (tempJob.getSteps() > tempJob.getTimeUnits()) {
+        	tempJob.setSteps(tempJob.getTimeUnits());
+        }
+        
+        if (tempJob.isCompleted()) {
+        	scoreBoard.updateScoreBoard(tempJob);
+        }
+        else {
+        	list.add(index, tempJob);
+        }
+        
+        
+        
+        timeToPlay = timeToPlay - duration;
+        
         return tempJob;
     }
 
@@ -132,8 +149,9 @@ public class Game{
      *
      */
     public void displayActiveJobs(){
-        //TODO: Display all the active jobs
-
+    	for (int i = 0; i < list.size(); i++) {
+    		System.out.println("At position: " + i + list.get(i).toString());
+    	}
     }
 
     /**
@@ -141,7 +159,6 @@ public class Game{
      */
     public void displayCompletedJobs(){
         scoreBoard.displayScoreBoard();
-
     }
 
     /**
@@ -149,7 +166,6 @@ public class Game{
      * @return the value calculated by getTotalScore
      */
     public int getTotalScore(){
-        
         return scoreBoard.getTotalScore();
     }
 }
