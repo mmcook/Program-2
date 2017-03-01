@@ -7,9 +7,7 @@ public class JobList implements ListADT<Job> {
 	private int numItems;
 	
 	public JobList() {
-		
-		head = new Listnode<Job>(null, null);
-		head = new Listnode<Job>(null, head);
+		head = new Listnode<Job>(null);
 		curr = head;
 		numItems = 0;
 	}
@@ -26,14 +24,17 @@ public class JobList implements ListADT<Job> {
 			throw new IllegalArgumentException();
 		}
 		
-		curr = head.getNext();
-		
-		while (curr.getNext() != null) {
-			curr = curr.getNext();
+		if (numItems == 0) {
+			head.setData(item);
 		}
-		
-		Listnode<Job> e = new Listnode<Job>(item);
-		curr.setNext(e);
+		else {
+			while (curr.getNext() != null) {
+				curr = curr.getNext();
+			}
+			
+			Listnode<Job> e = new Listnode<Job>(item);
+			curr.setNext(e);
+		}
 		
 		numItems++;
 	}
@@ -99,7 +100,7 @@ public class JobList implements ListADT<Job> {
 			throw new IndexOutOfBoundsException();
 		}
 		
-		curr = head.getNext();
+		curr = head;
 		
 		for (int i = 0; i < pos; i++) {
 			curr = curr.getNext();

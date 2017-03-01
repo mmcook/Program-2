@@ -163,7 +163,7 @@ public class Game{
      */
     public void displayActiveJobs(){
     	for (int i = 0; i < list.size(); i++) {
-    		System.out.println("At position: " + i + list.get(i).toString());
+    		System.out.println("At position: " + i + " " + list.get(i).toString());
     	}
     }
 
