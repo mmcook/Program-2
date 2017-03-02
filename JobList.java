@@ -24,17 +24,14 @@ public class JobList implements ListADT<Job> {
 			throw new IllegalArgumentException();
 		}
 		
-		if (numItems == 0) {
-			head.setData(item);
+		
+		while (curr.getNext() != null) {
+			curr = curr.getNext();
 		}
-		else {
-			while (curr.getNext() != null) {
-				curr = curr.getNext();
-			}
-			
-			Listnode<Job> e = new Listnode<Job>(item);
-			curr.setNext(e);
-		}
+		
+		Listnode<Job> e = new Listnode<Job>(item);
+		curr.setNext(e);
+		
 		
 		numItems++;
 	}
