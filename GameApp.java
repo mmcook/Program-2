@@ -8,13 +8,14 @@ public class GameApp{
 
     private static int seed = 0;
 	private static int timeToPlay = 0;
+	private Game game;
     /**
      * Constructor for instantiating game class
      * @param seed: Seed value as processed in command line
      * @param timeToPlay: Total time to play from command line
      */
     public GameApp(int seed, int timeToPlay){
-    	Game game = new Game(seed, timeToPlay);
+    	this.game = new Game(seed, timeToPlay);
         //TODO: Create a new instance of Game class
     }
 
@@ -51,9 +52,57 @@ public class GameApp{
      * Add Comments as per implementation
      */
     private void start(){
-    	// While there is still time remaining in the game
-    	while (timeToPlay > 0) {
+    	
+    	int jobIndex;
+    	int time;
+    	Job workJob;
+    	
+    	while (!this.game.isOver()) {
+        	System.out.println("You have " + this.game.getTimeToPlay() 
+        						+ " left in the game!" );
         	
+        	game.createJobs();
+        	System.out.println("Job Listing");
+        	game.displayActiveJobs();
+        	
+        	System.out.print("\nSelect a job to work on:");
+    		jobIndex = STDIN.nextInt();
+    		timeToPlay -= jobIndex;
+    		game.setTimeToPlay(timeToPlay);
+    		
+    		System.out.print("For how .long would you " 
+    							+ "like to work on this job?:");
+    		time = STDIN.nextInt();
+    		
+    		workJob = game.updateJob(jobIndex, time);
+    		timeToPlay = game.getTimeToPlay();
+    		
+    		if(!workJob.isCompleted()){
+    			
+    			System.out.println("At what position would you like to "
+    					+ "insert the job back into the list?");
+    			jobIndex = STDIN.nextInt();
+    			
+    			if(jobIndex >= 0 && jobIndex < game.getNumberOfJobs()){
+    				timeToPlay -= jobIndex;
+    				game.addJob(jobIndex, workJob);
+    			}
+    			else{
+    				timeToPlay -= game.getNumberOfJobs();
+    				game.addJob(workJob);
+    			}
+    			
+    			game.setTimeToPlay(timeToPlay);
+    		}
+    		else{
+    			
+    			System.out.println("Job completed! Current Score: " 
+    								+ game.getTotalScore());
+    			System.out.println("Total Score: " + game.getTotalScore());	
+    			game.displayCompletedJobs();
+    		
+    		}
+    		
         }
     }
 
