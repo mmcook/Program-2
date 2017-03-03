@@ -103,7 +103,7 @@ public class GameApp{
         }
     	
     	System.out.println("Game Over!");
-    	System.out.println("Your final score: " + game.getTotalScore());
+    	System.out.print("Your final score: " + game.getTotalScore());
     }
 
     /**
