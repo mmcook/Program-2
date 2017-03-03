@@ -56,6 +56,7 @@ public class GameApp{
     	int jobIndex;
     	int time;
     	Job workJob;
+    	String prompt;
     	
     	while (!this.game.isOver()) {
         	System.out.println("You have " + this.game.getTimeToPlay() 
@@ -65,23 +66,20 @@ public class GameApp{
         	System.out.println("Job Listing");
         	game.displayActiveJobs();
         	
-        	System.out.print("\nSelect a job to work on:");
-    		jobIndex = STDIN.nextInt();
+    		jobIndex = GameApp.getIntegerInput("\nSelect a job to work on: ");
     		timeToPlay -= jobIndex;
     		game.setTimeToPlay(timeToPlay);
     		
-    		System.out.print("For how .long would you " 
-    							+ "like to work on this job?:");
-    		time = STDIN.nextInt();
+    		time = GameApp.getIntegerInput("\nFor how .long would you " 
+    							+ "like to work on this job?: ");
     		
     		workJob = game.updateJob(jobIndex, time);
     		timeToPlay = game.getTimeToPlay();
     		
     		if(!workJob.isCompleted()){
     			
-    			System.out.println("At what position would you like to "
-    					+ "insert the job back into the list?");
-    			jobIndex = STDIN.nextInt();
+    			jobIndex = GameApp.getIntegerInput("\nAt what position would "
+    					+ "you like to insert the job back into the list?");
     			
     			if(jobIndex >= 0 && jobIndex < game.getNumberOfJobs()){
     				timeToPlay -= jobIndex;
