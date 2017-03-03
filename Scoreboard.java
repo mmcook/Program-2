@@ -65,7 +65,7 @@ public class Scoreboard implements ScoreboardADT {
 		for (int i = 0; i < numComplete; i++) {	
 			complete = board.get(i).getJobName();	
 			points = board.get(i).getPoints();
-			System.out.println("Job name: " + complete);
+			System.out.println("Job Name: " + complete);
 			System.out.println("Points earned for this job: " + points);
 			System.out.println("--------------------------------------------");
 		}
