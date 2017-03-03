@@ -7,16 +7,14 @@ public class JobList implements ListADT<Job> {
 	private int numItems;
 	
 	public JobList() {
-		
-		head = new Listnode<Job>(null, null);
-		head = new Listnode<Job>(null, head);
+		head = new Listnode<Job>(null);
 		curr = head;
 		numItems = 0;
 	}
 
 	@Override
 	public Iterator<Job> iterator() {
-		iterator = new JobListIterator(head);  
+		iterator = new JobListIterator(head); 
 		return iterator;
 	}
 
@@ -26,7 +24,6 @@ public class JobList implements ListADT<Job> {
 			throw new IllegalArgumentException();
 		}
 		
-		curr = head.getNext();
 		
 		while (curr.getNext() != null) {
 			curr = curr.getNext();
@@ -34,6 +31,7 @@ public class JobList implements ListADT<Job> {
 		
 		Listnode<Job> e = new Listnode<Job>(item);
 		curr.setNext(e);
+		
 		
 		numItems++;
 	}
@@ -46,6 +44,11 @@ public class JobList implements ListADT<Job> {
 		
 		if (item == null) {
 			throw new IllegalArgumentException();
+		}
+		
+		if(pos == numItems) {
+			add(item);
+			return;
 		}
 		
 		curr = head.getNext();
@@ -94,7 +97,7 @@ public class JobList implements ListADT<Job> {
 			throw new IndexOutOfBoundsException();
 		}
 		
-		curr = head.getNext();
+		curr = head;
 		
 		for (int i = 0; i < pos; i++) {
 			curr = curr.getNext();
@@ -117,6 +120,8 @@ public class JobList implements ListADT<Job> {
 		}
 		
 		curr.setNext(curr.getNext().getNext());
+		
+		numItems--;
 		
 		return curr.getNext().getData();
 	}
