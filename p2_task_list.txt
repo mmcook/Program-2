@@ -79,14 +79,14 @@ V,K + Task 2: Define the JobList class so that it implements the ListADT
        + ...
        + ...
        
-- Task 3: Write a Test_JobList class 
+K + Task 3: Write a Test_JobList class 
   This can be written before Task 2 is finished.
   Just write test methods that will pass when JobList is finished
-  - add a main method
-  - add a test to create a JobList
-  - test add(item) method
-  - test add(pos,item) method
-  - test ...
+  + add a main method
+  + add a test to create a JobList
+  + test add(item) method
+  + test add(pos,item) method
+  + test add(pos, item) exception handling (faulty position and null item)
   - test ...
   - test ...
   
