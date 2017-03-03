@@ -1,3 +1,4 @@
+import java.util.Iterator;
 
 public class Scoreboard implements ScoreboardADT {
 	
@@ -7,7 +8,6 @@ public class Scoreboard implements ScoreboardADT {
 	
 	public Scoreboard() {
 		this.board = new JobList();
-		//this.board = new Listnode<Job>(null);
 		numComplete = 0;
 	}
 	
@@ -22,7 +22,7 @@ public class Scoreboard implements ScoreboardADT {
 		// TODO Auto-generated method stub
 		int totalPoints = 0;
 		
-		for (int i = 0; i < numComplete; i++) {
+		for (int i = 0; i < board.size(); i++) {
 			totalPoints += board.get(i).getPoints();
 			
 		}
@@ -38,14 +38,12 @@ public class Scoreboard implements ScoreboardADT {
 	 * @throws IllegalArgumentException if job is null
 	 */
 	public void updateScoreBoard(Job job) {
-		// TODO Auto-generated method stub
+		
 		if (job == null) {
 			throw new IllegalArgumentException();
 		}
 		
-		if (job.isCompleted()) {
 			board.add(job);
-		}
 		numComplete++;
 	}
 
@@ -58,20 +56,20 @@ public class Scoreboard implements ScoreboardADT {
 	 * @return none
 	 */
 	public void displayScoreBoard() {
-		// TODO Auto-generated method stub
+		
 		String complete = null;
 		int points = 0;
-		Iterator<Job> itr = board.iterator();
 		
-		System.out.println("The jobs completed:");
-		
-		while(itr.hasNext()) {
-			complete = itr.next().getJobName();	
-			points = itr.next().getPoints();
+		System.out.println("The jobs completed: ");
+			
+		for (int i = 0; i < numComplete; i++) {	
+			complete = board.get(i).getJobName();	
+			points = board.get(i).getPoints();
 			System.out.println("Job name: " + complete);
 			System.out.println("Points earned for this job: " + points);
 			System.out.println("--------------------------------------------");
 		}
+		
 	}
 
 }
