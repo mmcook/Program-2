@@ -1,5 +1,25 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017
+// PROJECT:          p2
+// FILE:             GameApp.java
+//
+// Authors: Cody Kairis, Cory Burich
+// Author1:	Cody Kairis, kairis@wisc.edu, kairis, lecture 002
+// Author2: Cory Burich, cburich@wisc.edu, cburich, lecture 002
+//
+/////////////////////////////////////////////////////////////////////////////
+
 import java.util.Scanner;
 
+/**
+ * This class contains the main method and is responsible for the game's
+ * execution. It creates a game using a seed and an initial time, calls
+ * functions to keep track of the game's data, and controls the user
+ * interface.
+ *
+ * @author Cory Burich
+ * @author Cody Kairis
+ */
 public class GameApp{
     /**
      * Scanner instance for reading input from console
@@ -49,7 +69,9 @@ public class GameApp{
     }
 
     /**
-     * Add Comments as per implementation
+     * The start method controls most of the game's execution. It is 
+     * responsible for controlling the user interface, accessing and
+     * updating game data, and displaying the proper information.
      */
     private void start(){
     	
