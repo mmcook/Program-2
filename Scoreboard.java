@@ -1,7 +1,20 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017
+// PROJECT:          p2
+// FILE:             JobList.java
+//
+// Authors: Cody Kairis, Jessica Fernandes, Aseel Albeshri
+// Author1: Cody Kairis, kairis@wisc.edu, kairis, lecture 002
+// Author2: Jessica Fernandes, jfernandes2@wisc.edu, jfernandes2, lecture 002
+// Author3: Aseel Albeshri, albeshri@wisc.edu, albeshri, lecture 002
+//
+/////////////////////////////////////////////////////////////////////////////
+
 import java.util.Iterator;
 
 public class Scoreboard implements ScoreboardADT {
 	
+	//Data members
 	private JobList board;
 	
 	private int numComplete;
