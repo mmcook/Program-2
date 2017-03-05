@@ -31,6 +31,12 @@ public class JobList implements ListADT<Job> {
 		this.head = new Listnode<Job>(null);
 	}
 	
+	/**
+	* This method returns an iterator for the JobList instance
+	*
+	* @return Iterator<Job>
+	* @param none
+	*/
 	public Iterator<Job> iterator() {
 		
 		Iterator<Job> itr =  new JobListIterator(head.getNext());
