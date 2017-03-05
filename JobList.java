@@ -1,3 +1,14 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017
+// PROJECT:          p2
+// FILE:             JobList.java
+//
+// Authors: Cody Kairis, Jake Vande Walle
+// Author1: Cody Kairis, kairis@wisc.edu, kairis, lecture 002
+// Author2: Jake Vande Walle, jvandewalle@wisc.edu, jvandewalle, lecture 002
+//
+/////////////////////////////////////////////////////////////////////////////
+
 import java.util.Iterator;
 
 public class JobList implements ListADT<Job> {
