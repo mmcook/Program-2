@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////
 // Semester:         CS367 Spring 2017
 // PROJECT:          p2
-// FILE:             JobList.java
+// FILE:             Scoreboard.java
 //
 // Authors: Cody Kairis, Jessica Fernandes, Aseel Albeshri
 // Author1: Cody Kairis, kairis@wisc.edu, kairis, lecture 002
