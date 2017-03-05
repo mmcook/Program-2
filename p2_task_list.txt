@@ -120,7 +120,7 @@ V + Task 7: Complete the Game class implementation by completing the
     - Try calling Game methods to see if Game was constructed
       and initialized correctly.
       
-- Task 10: Define a main_menu_loop() method: 
+B - Task 10: Define a main_menu_loop() method: 
   Put code for one iteration of game play
   - Get the outputs to display in the right order
   - Add a call to this method from the main method
