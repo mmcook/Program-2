@@ -1,3 +1,13 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017
+// PROJECT:          p2
+// FILE:             JobListIterator.java
+//
+// Authors: Meggie Cook
+// Author1: Meggie Cook, mcook24@wisc.edu, mcook24, lecture 002
+//
+/////////////////////////////////////////////////////////////////////////////
+
 import java.util.NoSuchElementException;
 
 /**
