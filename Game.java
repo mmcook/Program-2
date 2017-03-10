@@ -141,8 +141,10 @@ public class Game{
         }
         
         tempJob.setSteps(tempJob.getSteps() + duration); 
+        timeToPlay -= duration;
         
         if (tempJob.getSteps() > tempJob.getTimeUnits()) {
+        	timeToPlay += tempJob.getSteps() - tempJob.getTimeUnits();
         	tempJob.setSteps(tempJob.getTimeUnits());
         }
         
