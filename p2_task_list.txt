@@ -95,7 +95,7 @@ C + Task 4: Write a JobListIterator class
  C + hasNext()
  C + next()
   
-- Task 5: Add a test to your Test_JobList class to test that the 
+K + Task 5: Add a test to your Test_JobList class to test that the 
   JobList can return an iterator and that the JobListIterator
   works as expected.
   
@@ -126,11 +126,11 @@ B + Task 10: Define a main_menu_loop() method:
   B + Get input value and echo to screen
   B + output the job list
 
-- ADD MORE SUB-TASKS TO ANY OF THE ABOVE TASKS
++ ADD MORE SUB-TASKS TO ANY OF THE ABOVE TASKS
 
-- ADD MORE TASKS AS YOU IDENTIFY WORK THAT MUST BE DONE
++ ADD MORE TASKS AS YOU IDENTIFY WORK THAT MUST BE DONE
 
-- DON'T FORGET TO SUBMIT EARLY AND OFTEN SO THAT THERE 
++ DON'T FORGET TO SUBMIT EARLY AND OFTEN SO THAT THERE 
   IS NO RISK OF MISSING THE SUBMISSION DEADLINE.
     
 *****************************************************************/
